@@ -4,7 +4,13 @@ ODIR = ./obj
 LDIR = ./lib
 
 CC = g++
+OS := $(shell uname)
+ifeq ($(OS), Darwin)
+CFLAGS = -framework OpenGL -framework GLUT -I$(IDIR) -Wall 
+else 
 CFLAGS = -lglut -lGL -I$(IDIR) -Wall 
+endif
+
 
 _DEPS =  Enemy.h GameObject.h Map.h Ship.h
 DEPS  = $(patsubst %,$(IDIR)/%,$(_DEPS))
