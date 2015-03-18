@@ -3,31 +3,46 @@
 #else
 #include <GL/glut.h>
 #endif
+
 #include <iostream>
+#include <math.h>
 using namespace std;
 
-void display() {
-   glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Set background color to black and opaque
-   glClear(GL_COLOR_BUFFER_BIT);         // Clear the color buffer
- 
-   glBegin(GL_QUADS);              // Each set of 4 vertices form a quad
-   glColor3f(1.0f, 0.0f, 0.0f); // Red
-   glVertex2f(-0.5f, -0.5f);    // x, y
-   glVertex2f( 0.5f, -0.5f);
-   glVertex2f( 0.5f,  0.5f);
-   glVertex2f(-0.5f,  0.5f);
-   glEnd();
-
-   glFlush();  // Render now
+void initialize(void)
+{
+        glMatrixMode(GL_PROJECTION);
+        //gluOrtho2D(-1.0,1.0,-1.0,1.0);
+        glMatrixMode(GL_MODELVIEW);
 }
 
+void draw(void)
+{
+
+        glClearColor(0.0f,0.0f,0.0f,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glPushMatrix();
+        glLoadIdentity();
+        glPopMatrix();
+        glLoadIdentity();
+        glFlush();
+
+}
+void keyboard(unsigned char key, int x, int y)
+{
+        if (key == 27)
+                exit(0);
+}
 int main(int argc, char** argv)
 {
         glutInit(&argc, argv);
-        glutCreateWindow("OpenGL Setup Test"); // Create a
-        glutInitWindowSize(320, 320);   // Set the
-        glutInitWindowPosition(50, 50); // Position the
-        glutDisplayFunc(display);
+        glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+        glutInitWindowSize(500,500);
+        glutCreateWindow("Lolip vs Cookies");
+        glutDisplayFunc(draw);
+        glutKeyboardFunc(keyboard);
+        initialize();
+        glutIdleFunc(draw);
         glutMainLoop();
+
         return 0;
 }
