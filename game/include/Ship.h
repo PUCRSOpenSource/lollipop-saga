@@ -1,5 +1,5 @@
 #include "GameObject.h"
-class Ship
+class Ship : public GameObject
 {
 public:
 

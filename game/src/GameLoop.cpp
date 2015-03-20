@@ -4,8 +4,10 @@
 #include <GL/glut.h>
 #endif
 
-#include <iostream>
 #include <math.h>
+#include "GameObject.h"
+#include "Ship.h"
+
 using namespace std;
 
 void initialize(void)
@@ -17,7 +19,6 @@ void initialize(void)
 
 void draw(void)
 {
-
         glClearColor(0.0f,0.0f,0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glPushMatrix();
@@ -34,6 +35,7 @@ void keyboard(unsigned char key, int x, int y)
 }
 int main(int argc, char** argv)
 {
+        GameObject* g = new Ship();
         glutInit(&argc, argv);
         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
         glutInitWindowSize(500,500);
