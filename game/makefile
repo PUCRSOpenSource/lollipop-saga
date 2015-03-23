@@ -8,7 +8,7 @@ OS := $(shell uname)
 ifeq ($(OS), Darwin)
 CFLAGS = -framework OpenGL -framework GLUT -I$(IDIR) -Wall 
 else 
-CFLAGS = -lglut -lGL -I$(IDIR) -Wall 
+CFLAGS = -lglut -lGL -lGLU -I$(IDIR) -Wall 
 endif
 
 

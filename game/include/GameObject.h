@@ -4,6 +4,7 @@
 #include <GL/glut.h>
 #endif
 
+#include <iostream>
 #pragma once
 
 class GameObject
