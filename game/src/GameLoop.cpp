@@ -5,46 +5,41 @@
 #endif
 
 #include <math.h>
+#include <vector>
 #include "GameObject.h"
 #include "Ship.h"
 
 using namespace std;
 
-void initialize(void)
-{
-        glMatrixMode(GL_PROJECTION);
-        //gluOrtho2D(-1.0,1.0,-1.0,1.0);
-        glMatrixMode(GL_MODELVIEW);
-}
-
+std::vector<GameObject*> objects;
 void draw(void)
 {
-        glClearColor(0.0f,0.0f,0.0f,1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        glPushMatrix();
-        glLoadIdentity();
-        glPopMatrix();
-        glLoadIdentity();
-        glFlush();
+        objects[0]->draw();
+}
 
-}
-void keyboard(unsigned char key, int x, int y)
+void reshapeFunc(int x, int y)
 {
-        if (key == 27)
-                exit(0);
+
+        if(y == 0 || x == 0)
+                        return;  
+        glMatrixMode(GL_PROJECTION);  
+        glLoadIdentity();
+        gluPerspective(40.0,(GLdouble)x/(GLdouble)y,0.5,20.0);
+        glMatrixMode(GL_MODELVIEW);
+        glViewport(0,0,x,y);  
 }
-int main(int argc, char** argv)
+
+int main(int argc, char *argv[])
 {
         GameObject* g = new Ship();
+        objects.push_back(g);
         glutInit(&argc, argv);
         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-        glutInitWindowSize(500,500);
-        glutCreateWindow("Lolip vs Cookies");
+        glutInitWindowSize(400,400);
+        glutCreateWindow("Lolipop");
+        glClearColor(0.0,0.0,0.0,0.0);
         glutDisplayFunc(draw);
-        glutKeyboardFunc(keyboard);
-        initialize();
-        glutIdleFunc(draw);
+        glutReshapeFunc(reshapeFunc);
         glutMainLoop();
-
         return 0;
 }
