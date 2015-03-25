@@ -14,32 +14,44 @@ using namespace std;
 std::vector<GameObject*> objects;
 void draw(void)
 {
-        objects[0]->draw();
-}
-
-void reshapeFunc(int x, int y)
-{
-
-        if(y == 0 || x == 0)
-                        return;  
-        glMatrixMode(GL_PROJECTION);  
+        glClearColor(0.0f,0.0f,0.0f,1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glPushMatrix();
         glLoadIdentity();
-        gluPerspective(40.0,(GLdouble)x/(GLdouble)y,0.5,20.0);
-        glMatrixMode(GL_MODELVIEW);
-        glViewport(0,0,x,y);  
+        glPopMatrix();
+        glLoadIdentity();
+        objects[0]->draw();
+        glFlush();
+}
+void keyboard(unsigned char key, int x, int y)
+{
+        if (key == 27)
+                exit(0);
+        glutPostRedisplay();
 }
 
-int main(int argc, char *argv[])
+void init(void)
 {
-        GameObject* g = new Ship();
-        objects.push_back(g);
-        glutInit(&argc, argv);
+        glMatrixMode(GL_PROJECTION);
+        gluOrtho2D(-1.0,1.0,-1.0,1.0);
+        glMatrixMode(GL_MODELVIEW);
+}
+
+int main(void)
+{
+        int argc = 0;
+        char *argv[] = { (char *)"gl", 0 };
+
+        GameObject* ship = new Ship();
+        objects.push_back(ship);
+
+        glutInit(&argc,argv);
         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-        glutInitWindowSize(400,400);
-        glutCreateWindow("Lolipop");
-        glClearColor(0.0,0.0,0.0,0.0);
+        glutInitWindowSize(500,500);
+        glutCreateWindow("Lollipop");
         glutDisplayFunc(draw);
-        glutReshapeFunc(reshapeFunc);
+        glutKeyboardFunc (keyboard);
+        init();
         glutMainLoop();
         return 0;
 }
