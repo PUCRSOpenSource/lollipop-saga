@@ -1,6 +1,9 @@
 # Mac Crap
 .DS_Store
 
+# VIM SWAP
+*.swp
+
 # Compiled Object files
 *.slo
 *.lo
