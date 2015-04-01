@@ -1,22 +1,44 @@
 #include "Ship.h"
+#include <cmath>
 
 Ship::Ship(void) : GameObject()
 {
-        setX(20);
-        setY(20);
+        setX(0.0f);
+        setY(-0.6f);
 }
 
 Ship::~Ship(void)
 {
 }
 
-void Ship::draw()
+void 
+Ship::draw()
 {
         glColor3f(1,0,0);
-        glLineWidth(3);
-        glBegin(GL_TRIANGLES);
-        glVertex2f(-0.1f,-0.80f);
-        glVertex2f(0.0f,-0.70f);
-        glVertex2f(0.1f,-0.80f);
+        //FIXME
+        //colocar cx e cx em um ponto
+        float cx = this->x;
+        float cy = this->y;
+
+        int segs = 100;
+        float t;
+
+        float theta = 2.0f * M_PI / float(segs);
+        float cos_theta = cosf(theta);
+        float sin_theta = sinf(theta);
+        float r = 0.1f;
+
+        float posX = r;
+        float posY = 0;
+
+        glLineWidth(2);
+        glBegin(GL_LINE_LOOP); 
+        for(int i = 0; i < segs; i++) 
+        { 
+                glVertex2f(posX + cx, posY + cy);
+                t = posX;
+                posX = cos_theta * posX - sin_theta * posY;
+                posY = sin_theta * t + cos_theta * posY;
+        }
         glEnd();
 }

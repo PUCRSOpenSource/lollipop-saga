@@ -30,12 +30,25 @@ float GameObject::getY()
         return y;
 }
 
-void GameObject::moveX(float move)
+void
+GameObject::moveX(float move)
 {
         x = move; 
 }
 
-void GameObject::moveY(float move)
+void
+GameObject::moveY(float move)
 {
         y = move;
+}
+
+void 
+GameObject::moveLeft()
+{
+        x -= 0.05f;
+}
+void
+GameObject::moveRight()
+{
+        x+= 0.05f;
 }

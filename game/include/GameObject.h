@@ -4,7 +4,6 @@
 #include <GL/glut.h>
 #endif
 
-#include <iostream>
 #pragma once
 
 class GameObject
@@ -24,9 +23,12 @@ public:
     void moveX(float move);
     void moveY(float move);
 
+    void moveLeft();
+    void moveRight();
+
     void die(void);
 
-private:
+protected:
     float x;
     float y;
 };

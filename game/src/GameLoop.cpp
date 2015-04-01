@@ -12,6 +12,7 @@
 using namespace std;
 
 std::vector<GameObject*> objects;
+GameObject* ship;
 void draw(void)
 {
         glClearColor(0.0f,0.0f,0.0f,1.0f);
@@ -25,8 +26,14 @@ void draw(void)
 }
 void keyboard(unsigned char key, int x, int y)
 {
+
         if (key == 27)
                 exit(0);
+        else if (key == 'a') 
+                ship->moveLeft();
+        else if (key == 'd') 
+                ship->moveRight();
+                
         glutPostRedisplay();
 }
 
@@ -42,12 +49,12 @@ int main(void)
         int argc = 0;
         char *argv[] = { (char *)"gl", 0 };
 
-        GameObject* ship = new Ship();
+        ship = new Ship();
         objects.push_back(ship);
 
         glutInit(&argc,argv);
         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-        glutInitWindowSize(350,600);
+        glutInitWindowSize(350,350);
         glutCreateWindow("Lollipop");
         glutDisplayFunc(draw);
         glutKeyboardFunc (keyboard);
