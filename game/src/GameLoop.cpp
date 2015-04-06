@@ -8,6 +8,7 @@
 #include <vector>
 #include "GameObject.h"
 #include "Ship.h"
+#include <stdlib.h>
 
 using namespace std;
 
@@ -33,6 +34,8 @@ void keyboard(unsigned char key, int x, int y)
                 ship->moveLeft();
         else if (key == 'd') 
                 ship->moveRight();
+        else if (key == 'w')
+                ship->moveUp();
                 
         glutPostRedisplay();
 }

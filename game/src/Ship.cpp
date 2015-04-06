@@ -32,13 +32,19 @@ Ship::draw()
         float posY = 0;
 
         glLineWidth(2);
-        glBegin(GL_LINE_LOOP); 
-        for(int i = 0; i < segs; i++) 
-        { 
-                glVertex2f(posX + cx, posY + cy);
-                t = posX;
-                posX = cos_theta * posX - sin_theta * posY;
-                posY = sin_theta * t + cos_theta * posY;
+        glBegin(GL_LINE_LOOP);
+        for(int i = 0; i < segs; i++)
+        {
+            if (i == 20) {
+                glVertex2f(posX + cx, posY + cy + 0.5);
+                glVertex2f(posX + cx - 0.05, posY + cy + 0.5);
+                glVertex2f(posX + cx - 0.05, posY + cy);
+            }
+            glVertex2f(posX + cx, posY + cy);
+            t = posX;
+            posX = cos_theta * posX - sin_theta * posY;
+            posY = sin_theta * t + cos_theta * posY;
         }
+    
         glEnd();
 }

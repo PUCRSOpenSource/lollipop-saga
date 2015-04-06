@@ -26,6 +26,8 @@ public:
     void moveLeft();
     void moveRight();
 
+    void moveUp();
+
     void die(void);
 
 protected:
