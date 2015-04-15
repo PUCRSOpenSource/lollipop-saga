@@ -11,8 +11,7 @@ Ship::~Ship(void)
 {
 }
 
-void 
-Ship::draw()
+void Ship::draw()
 {
         glColor3f(1,0,0);
         //FIXME
