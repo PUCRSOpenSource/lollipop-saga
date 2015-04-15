@@ -18,8 +18,24 @@ std::vector<GameObject*> objects;
 GameObject* ship;
 float bottomY;
 float topY;
+
+void mapMove()
+{
+        long time = glutGet(GLUT_ELAPSED_TIME);
+        if(time % 100 == 0)
+        {
+                bottomY += 0.005;
+                topY += 0.005;
+        }
+
+}
 void draw(void)
 {
+        mapMove();
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        gluOrtho2D(-1.0,1.0,bottomY,topY);
+        glMatrixMode(GL_MODELVIEW);
        // glutReshapeWindow(350, 1050);
         glClearColor(0.0f,0.0f,0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
@@ -46,13 +62,6 @@ void keyboard(unsigned char key, int x, int y)
                 ship->moveUp();
 
         } else if (key == 's') {
-                topY = topY + 0.1;
-                bottomY = bottomY + 0.1;
-                glMatrixMode(GL_PROJECTION);
-                glLoadIdentity();
-                gluOrtho2D(-1.0,1.0,bottomY,topY);
-                glMatrixMode(GL_MODELVIEW);
-
         }
                 
                 
@@ -87,6 +96,7 @@ int main(void)
         glutCreateWindow("Lollipop");
         glutDisplayFunc(draw);
         glutKeyboardFunc (keyboard);
+        glutIdleFunc(draw);
         init();
         glutMainLoop();
         return 0;
