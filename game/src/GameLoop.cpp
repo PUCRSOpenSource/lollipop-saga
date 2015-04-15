@@ -4,11 +4,13 @@
 #include <GL/glut.h>
 #endif
 
-#include <math.h>
-#include <vector>
+#include "Enemy.h"
 #include "GameObject.h"
 #include "Ship.h"
+
+#include <math.h>
 #include <stdlib.h>
+#include <vector>
 
 using namespace std;
 
@@ -22,7 +24,9 @@ void draw(void)
         glLoadIdentity();
         glPopMatrix();
         glLoadIdentity();
-        objects[0]->draw();
+        for (int i = 0; i < objects.size(); i++) {
+                objects[i]->draw();
+        }
         glFlush();
 }
 void keyboard(unsigned char key, int x, int y)
@@ -52,8 +56,13 @@ int main(void)
         int argc = 0;
         char *argv[] = { (char *)"gl", 0 };
 
+        //THE ship
         ship = new Ship();
         objects.push_back(ship);
+
+        GameObject* enemy;
+        enemy = new Enemy();
+        objects.push_back(enemy);
 
         glutInit(&argc,argv);
         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
