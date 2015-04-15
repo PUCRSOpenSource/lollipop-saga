@@ -21,7 +21,7 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-game.bin: $(OBJ)
+lollipop.game: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 .PHONY: clean
 
