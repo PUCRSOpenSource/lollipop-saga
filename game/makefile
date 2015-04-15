@@ -21,7 +21,7 @@ OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-game: $(OBJ)
+game.bin: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 .PHONY: clean
 
