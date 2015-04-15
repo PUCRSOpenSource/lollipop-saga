@@ -2,7 +2,7 @@
 class Enemy: public GameObject
 {
 public:
-    Enemy(void);
+    Enemy(float x, float y);
     ~Enemy();
 
     void draw();

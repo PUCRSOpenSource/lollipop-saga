@@ -1,10 +1,10 @@
 #include "Enemy.h"
 #include <cmath>
 
-Enemy::Enemy(void) : GameObject()
+Enemy::Enemy(float x, float y) : GameObject()
 {
-        setX(0.0f);
-        setX(-0.6f);
+        setX(x);
+        setY(y);
 }
 
 void Enemy::draw()
