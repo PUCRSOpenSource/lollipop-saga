@@ -27,4 +27,4 @@ lollipop.game: $(OBJ)
 
 clean:
 	rm -f $(ODIR)/*.o
-	rm -f game
+	rm -f lollipop.game
