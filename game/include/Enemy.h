@@ -1,4 +1,4 @@
-#include "GameObjet.h"
+#include "GameObject.h"
 class Enemy
 {
 public:
