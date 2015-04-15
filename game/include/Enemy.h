@@ -1,5 +1,5 @@
 #include "GameObject.h"
-class Enemy
+class Enemy: public GameObject
 {
 public:
     Enemy(void);
