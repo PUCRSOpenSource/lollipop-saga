@@ -15,7 +15,7 @@ endif
 _DEPS =  Enemy.h GameObject.h Map.h Ship.h
 DEPS  = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = GameLoop.o GameObject.o Map.o Ship.o 
+_OBJ = GameLoop.o GameObject.o Map.o Ship.o Enemy.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)
