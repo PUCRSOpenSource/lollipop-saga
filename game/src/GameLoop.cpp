@@ -51,20 +51,27 @@ void draw(void)
 
 void keyboard(unsigned char key, int x, int y)
 {
-
-        if (key == 27)
+        switch (key) {
+            case 27:
                 exit(0);
-        else if (key == 'a') 
-                ship->moveLeft();
-        else if (key == 'd') 
-                ship->moveRight();
-        else if (key == 'w') {
+                break;
+            case 'a':
+                if(ship->getX() > -0.9) {
+                    ship->moveLeft();
+                }
+                break;
+            case 'd':
+                if(ship->getX() < 0.9) {
+                    ship->moveRight();
+                }
+                break;
+            case 'w':
                 ship->moveUp();
-
-        } else if (key == 's') {
+                break;
+            default:
+                break;
         }
-                
-                
+        
         glutPostRedisplay();
 }
 
