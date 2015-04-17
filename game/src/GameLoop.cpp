@@ -24,8 +24,9 @@ void mapMove()
         long time = glutGet(GLUT_ELAPSED_TIME);
         if(time % 100 == 0)
         {
-                bottomY += 0.005;
-                topY += 0.005;
+                bottomY += 0.0009;
+                topY += 0.0009;
+                ship->moveUp();
         }
 
 }
@@ -99,7 +100,7 @@ int main(void)
 
         glutInit(&argc,argv);
         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-        glutInitWindowSize(350,350);
+        glutInitWindowSize(350,1050);
         glutCreateWindow("Lollipop");
         glutDisplayFunc(draw);
         glutKeyboardFunc (keyboard);

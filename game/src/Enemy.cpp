@@ -30,7 +30,7 @@ void Enemy::draw()
         glBegin(GL_LINE_LOOP);
         for(int i = 0; i < segs; i++)
         {
-            glVertex2f(posX + cx, posY + cy);
+            glVertex2f(posX + cx, posY/3 + cy);
             t = posX;
             posX = cos_theta * posX - sin_theta * posY;
             posY = sin_theta * t + cos_theta * posY;
