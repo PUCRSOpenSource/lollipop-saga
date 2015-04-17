@@ -35,6 +35,7 @@ void draw(void)
             }
             timeBefore = timeNow;
         }
+
         // long time = glutGet(GLUT_ELAPSED_TIME);
     
         //  if(time % 10 == 0)
@@ -58,7 +59,46 @@ void draw(void)
         for (int i = 0; i < objects.size(); i++) {
                 objects[i]->draw();
         }
+        GameObject *player = objects[0];
+        GameObject *enemy = objects[1];
+
+        if (objects.size() > 1) {
+            if(hasCollided(player,enemy)) {
+                objects.pop_back();
+            }
+
+        }
+        
         glFlush();
+}
+
+bool hasCollided(GameObject *player, GameObject *enemy) {
+    return topRightPointInside(player,enemy) && topLeftPointInside(player,enemy);
+
+}
+
+bool topRightPointInside(GameObject *player, GameObject *enemy) {
+        float pxMax = player->getX() + 0.1;
+        float exMax = enemy->getX() + 0.1;
+        float exMin = enemy->getX() - 0.1;
+        bool xInside = ((pxMax > exMin) && (pxMax < exMax));
+        float pyMax = player->getY() + 0.1;
+        float eyMax = enemy->getY() + 0.1;
+        float eyMin = enemy->getY() - 0.1;
+        bool yInside = ((pyMax > eyMin) && (pyMax < eyMax));
+        return xInside && yInside;
+}
+
+bool topLeftPointInside(GameObject *player, GameObject *enemy) {
+        float pxMin = player->getX() - 0.1;
+        float exMax = enemy->getX() + 0.1;
+        float exMin = enemy->getX() - 0.1;
+        bool xInside = ((pxMin > exMin) && (pxMin < exMax));
+        float pyMin = player->getY() + 0.1;
+        float eyMax = enemy->getY() + 0.1;
+        float eyMin = enemy->getY() - 0.1;
+        bool yInside = ((pyMin > eyMin) && (pyMin < eyMax));
+        return xInside && yInside;
 }
 
 void keyboard(unsigned char key, int x, int y)

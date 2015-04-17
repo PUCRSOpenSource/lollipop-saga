@@ -74,3 +74,4 @@ GameObject::zigzag()
 		zig = false;
 	}
 }
+

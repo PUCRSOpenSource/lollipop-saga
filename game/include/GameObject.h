@@ -35,5 +35,13 @@ public:
 protected:
     float x;
     float y;
+
     bool zig;
+
+private:
+    float xMax;
+    float yMax;
+    float xMin;
+    float yMin;
+
 };
