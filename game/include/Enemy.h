@@ -6,5 +6,6 @@ public:
     ~Enemy();
 
     void draw();
+    void move();
 private:
 };

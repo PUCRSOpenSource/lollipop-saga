@@ -58,3 +58,19 @@ GameObject::moveUp()
 {
         y+= 0.009f;
 }
+
+void
+GameObject::zigzag()
+{
+	if(zig) {
+		x+=0.5f;
+	} else {
+		x-=0.5f;
+	}
+	if (x < -0.9f) {
+		zig = true;
+	}
+	if (x > 0.9f) {
+		zig = false;
+	}
+}

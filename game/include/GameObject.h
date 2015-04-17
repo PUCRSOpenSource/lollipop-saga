@@ -30,7 +30,10 @@ public:
 
     void die(void);
 
+    void zigzag();
+
 protected:
     float x;
     float y;
+    bool zig;
 };

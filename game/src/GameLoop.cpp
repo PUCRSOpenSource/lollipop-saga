@@ -30,6 +30,7 @@ void draw(void)
             bottomY += 0.009;
             topY += 0.009;
             ship->moveUp();
+            objects[1]->zigzag();
             timeBefore = timeNow;
         }
         // long time = glutGet(GLUT_ELAPSED_TIME);
