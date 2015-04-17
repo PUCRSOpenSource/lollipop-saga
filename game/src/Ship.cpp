@@ -3,8 +3,8 @@
 
 Ship::Ship(void) : GameObject()
 {
-        setX(0.0f);
-        setY(-0.6f);
+        setX(0.1f);
+        setY(-0.3f);
 }
 
 Ship::~Ship(void)
@@ -34,7 +34,7 @@ void Ship::draw()
         glBegin(GL_LINE_LOOP);
         for(int i = 0; i < segs; i++)
         {
-            glVertex2f(posX + cx, posY + cy);
+            glVertex2f(posX + cx, posY/3 + cy);
             t = posX;
             posX = cos_theta * posX - sin_theta * posY;
             posY = sin_theta * t + cos_theta * posY;
@@ -44,8 +44,8 @@ void Ship::draw()
         glBegin(GL_LINE_LOOP);
                 glVertex2f(this->x - 0.0125, this->y);
                 glVertex2f(this->x + 0.0125, this->y);
-                glVertex2f(this->x + 0.0125, this->y + 0.3);
-                glVertex2f(this->x - 0.0125, this->y + 0.3);
+                glVertex2f(this->x + 0.0125, this->y + 0.1);
+                glVertex2f(this->x - 0.0125, this->y + 0.1);
                 glVertex2f(this->x - 0.0125, this->y);
         glEnd();
         

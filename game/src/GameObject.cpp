@@ -56,5 +56,5 @@ GameObject::moveRight()
 void
 GameObject::moveUp()
 {
-        y+= 0.05f;
+        y+= 0.0009f;
 }
