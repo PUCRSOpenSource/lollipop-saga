@@ -4,7 +4,7 @@
 Ship::Ship(void) : GameObject()
 {
         setX(0.1f);
-        setY(-0.3f);
+        setY(-0.9f);
 }
 
 Ship::~Ship(void)

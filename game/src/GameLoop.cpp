@@ -11,6 +11,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -18,21 +19,32 @@ std::vector<GameObject*> objects;
 GameObject* ship;
 float bottomY;
 float topY;
+long timeBefore;
+long timeNow;
 
 void draw(void)
 {
-        long time = glutGet(GLUT_ELAPSED_TIME);
-        if(time % 100 == 0)
-        {
-                bottomY += 0.009;
-                topY += 0.009;
-                ship->moveUp();
+
+        timeNow = glutGet(GLUT_ELAPSED_TIME);
+        if (timeNow - timeBefore > 100) {
+            bottomY += 0.009;
+            topY += 0.009;
+            ship->moveUp();
+            timeBefore = timeNow;
         }
+        // long time = glutGet(GLUT_ELAPSED_TIME);
+    
+        //  if(time % 10 == 0)
+        //  {
+        //          bottomY += 0.009;
+        //          topY += 0.009;
+        //          ship->moveUp();
+        // }
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         gluOrtho2D(-1.0,1.0,bottomY,topY);
         glMatrixMode(GL_MODELVIEW);
-       // glutReshapeWindow(350, 1050);
+        glutReshapeWindow(350, 1050);
         glClearColor(0.0f,0.0f,0.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         glPushMatrix();
@@ -63,6 +75,8 @@ void keyboard(unsigned char key, int x, int y)
                 break;
             case 'w':
                 ship->moveUp();
+                //bottomY += 0.009;
+                //topY += 0.009;
                 break;
             default:
                 break;
@@ -94,6 +108,9 @@ int main(void)
         objects.push_back(enemy);
 
         glutInit(&argc,argv);
+        timeNow = glutGet(GLUT_ELAPSED_TIME);
+        timeBefore = glutGet(GLUT_ELAPSED_TIME);
+        timeNow = glutGet(GLUT_ELAPSED_TIME);
         glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
         glutInitWindowSize(350,1050);
         glutCreateWindow("Lollipop");
