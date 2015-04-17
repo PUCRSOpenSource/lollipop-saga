@@ -19,7 +19,7 @@ GameObject* ship;
 float bottomY;
 float topY;
 
-void mapMove()
+void draw(void)
 {
         long time = glutGet(GLUT_ELAPSED_TIME);
         if(time % 100 == 0)
@@ -28,11 +28,6 @@ void mapMove()
                 topY += 0.009;
                 ship->moveUp();
         }
-
-}
-void draw(void)
-{
-        mapMove();
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         gluOrtho2D(-1.0,1.0,bottomY,topY);
