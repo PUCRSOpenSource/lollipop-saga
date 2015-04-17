@@ -24,8 +24,8 @@ void mapMove()
         long time = glutGet(GLUT_ELAPSED_TIME);
         if(time % 100 == 0)
         {
-                bottomY += 0.005;
-                topY += 0.005;
+                bottomY += 0.009;
+                topY += 0.009;
         }
 
 }
