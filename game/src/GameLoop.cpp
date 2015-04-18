@@ -26,11 +26,13 @@ void draw(void)
 {
 
         timeNow = glutGet(GLUT_ELAPSED_TIME);
-        if (timeNow - timeBefore > 100) {
+        if (timeNow - timeBefore > 20) {
             bottomY += 0.009;
             topY += 0.009;
             ship->moveUp();
-            objects[1]->zigzag();
+            for(int i = 0; i < objects.size(); i++) {
+                objects[i]->zigzag();
+            }
             timeBefore = timeNow;
         }
         // long time = glutGet(GLUT_ELAPSED_TIME);
@@ -52,6 +54,7 @@ void draw(void)
         glLoadIdentity();
         glPopMatrix();
         glLoadIdentity();
+        ship->draw();
         for (int i = 0; i < objects.size(); i++) {
                 objects[i]->draw();
         }
@@ -102,11 +105,13 @@ int main(void)
 
         //THE ship
         ship = new Ship();
-        objects.push_back(ship);
-
-        GameObject* enemy;
-        enemy = new Enemy(0.5,0.4);
-        objects.push_back(enemy);
+        for (int i = 0; i < 20; i++) {
+            GameObject* enemy;
+            enemy = new Enemy(0.5,i);
+            objects.push_back(enemy);
+        }
+        //enemy = new Enemy(0.5,0.4);
+        //objects.push_back(enemy);
 
         glutInit(&argc,argv);
         timeNow = glutGet(GLUT_ELAPSED_TIME);
