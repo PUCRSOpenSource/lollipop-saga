@@ -59,46 +59,42 @@ void draw(void)
         for (int i = 0; i < objects.size(); i++) {
                 objects[i]->draw();
         }
-        GameObject *player = objects[0];
-        GameObject *enemy = objects[1];
 
-        if (objects.size() > 1) {
-            if(hasCollided(player,enemy)) {
-                objects.pop_back();
+        //to tendo problemas pra usar funçoes sei la pq entao vou botar tudo aqui dentro
+
+        for (int i = 0; i < objects.size(); i++) {
+            GameObject *enemy = objects[i];
+            float pXmax = ship->getX() + 0.1; //x maximo do player
+            float pXmin = ship->getX() - 0.1; //x minimo do player
+            float pYmax = ship->getY() + 0.1; //y maximo do player
+            float pYmin = ship->getY() - 0.1; //y minimo do player
+
+            float eXmax = enemy->getX() + 0.1; //x maximo do enemy
+            float eXmin = enemy->getX() - 0.1; //x minimo do enemy
+            float eYmax = enemy->getY() + 0.1; //y maximo do enemy
+            float eYmin = enemy->getY() - 0.1; //y minimo do enemy
+
+            bool topRightPointInside = ((pXmax > eXmin) && (pXmax < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
+            bool topLeftPointInside = ((pXmin > eXmin) && (pXmin < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
+            bool topInside = topRightPointInside || topLeftPointInside;
+            if (topInside) {
+                objects.erase(objects.begin() + i);
             }
 
         }
+
+
+        //GameObject *player = objects[0];
+        // GameObject *enemy = objects[1];
+
+        // if (objects.size() > 1) {
+        //     if(hasCollided(player,enemy)) {
+        //         objects.pop_back();
+        //     }
+
+        // }
         
         glFlush();
-}
-
-bool hasCollided(GameObject *player, GameObject *enemy) {
-    return topRightPointInside(player,enemy) && topLeftPointInside(player,enemy);
-
-}
-
-bool topRightPointInside(GameObject *player, GameObject *enemy) {
-        float pxMax = player->getX() + 0.1;
-        float exMax = enemy->getX() + 0.1;
-        float exMin = enemy->getX() - 0.1;
-        bool xInside = ((pxMax > exMin) && (pxMax < exMax));
-        float pyMax = player->getY() + 0.1;
-        float eyMax = enemy->getY() + 0.1;
-        float eyMin = enemy->getY() - 0.1;
-        bool yInside = ((pyMax > eyMin) && (pyMax < eyMax));
-        return xInside && yInside;
-}
-
-bool topLeftPointInside(GameObject *player, GameObject *enemy) {
-        float pxMin = player->getX() - 0.1;
-        float exMax = enemy->getX() + 0.1;
-        float exMin = enemy->getX() - 0.1;
-        bool xInside = ((pxMin > exMin) && (pxMin < exMax));
-        float pyMin = player->getY() + 0.1;
-        float eyMax = enemy->getY() + 0.1;
-        float eyMin = enemy->getY() - 0.1;
-        bool yInside = ((pyMin > eyMin) && (pyMin < eyMax));
-        return xInside && yInside;
 }
 
 void keyboard(unsigned char key, int x, int y)
@@ -145,7 +141,7 @@ int main(void)
 
         //THE ship
         ship = new Ship();
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             GameObject* enemy;
             enemy = new Enemy(0.5,i);
             objects.push_back(enemy);

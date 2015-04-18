@@ -63,9 +63,9 @@ void
 GameObject::zigzag()
 {
 	if(zig) {
-		x+=0.1f;
+		x+=0.05f;
 	} else {
-		x-=0.1f;
+		x-=0.05f;
 	}
 	if (x < -0.9f) {
 		zig = true;
