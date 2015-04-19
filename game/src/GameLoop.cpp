@@ -58,6 +58,7 @@ void draw(void)
         glPopMatrix();
         glLoadIdentity();
         ship->draw();
+        map->drawMap();
         for (int i = 0; i < objects.size(); i++) {
                 objects[i]->draw();
         }
@@ -162,7 +163,6 @@ int main(void)
         glutInitWindowSize(350,1050);
         glutCreateWindow("Lollipop");
         glutDisplayFunc(draw);
-        map->drawMap();
         glutKeyboardFunc (keyboard);
         glutIdleFunc(draw);
         init();
