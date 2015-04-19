@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "GameObject.h"
 #include "Ship.h"
+#include "Map.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -17,6 +18,7 @@ using namespace std;
 
 std::vector<GameObject*> objects;
 GameObject* ship;
+Map* map;
 float bottomY;
 float topY;
 long timeBefore;
@@ -76,7 +78,9 @@ void draw(void)
 
             bool topRightPointInside = ((pXmax > eXmin) && (pXmax < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
             bool topLeftPointInside = ((pXmin > eXmin) && (pXmin < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
-            bool topInside = topRightPointInside || topLeftPointInside;
+            bool bottomRightPointInside = ((pXmax > eXmin) && (pXmax < eXmax)) && ((pYmin > eYmin) && (pYmin < eYmax));
+            bool bottomLeftPointInside = ((pXmin > eXmin) && (pXmin < eXmax)) && ((pYmin > eYmin) && (pYmin < eYmax));
+            bool topInside = topRightPointInside || topLeftPointInside || bottomLeftPointInside || bottomRightPointInside;
             if (topInside) {
                 objects.erase(objects.begin() + i);
             }
@@ -141,6 +145,7 @@ int main(void)
 
         //THE ship
         ship = new Ship();
+        map = new Map();
         for (int i = 0; i < 10; i++) {
             GameObject* enemy;
             enemy = new Enemy(0.5,i);
@@ -157,6 +162,7 @@ int main(void)
         glutInitWindowSize(350,1050);
         glutCreateWindow("Lollipop");
         glutDisplayFunc(draw);
+        map->drawMap();
         glutKeyboardFunc (keyboard);
         glutIdleFunc(draw);
         init();
