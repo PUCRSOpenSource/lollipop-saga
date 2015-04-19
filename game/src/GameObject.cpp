@@ -75,3 +75,28 @@ GameObject::zigzag()
 	}
 }
 
+bool
+GameObject::hasContact(GameObject *object)
+{
+	
+    float pXmax = x + 0.1; //x maximo do player
+    float pXmin = x - 0.1; //x minimo do player
+    float pYmax = y + 0.1; //y maximo do player
+    float pYmin = y - 0.1; //y minimo do player
+
+    float eXmax = object->getX() + 0.1; //x maximo do enemy
+    float eXmin = object->getX() - 0.1; //x minimo do enemy
+    float eYmax = object->getY() + 0.1; //y maximo do enemy
+    float eYmin = object->getY() - 0.1; //y minimo do enemy
+
+    bool topRightPointInside = ((pXmax > eXmin) && (pXmax < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
+    bool topLeftPointInside = ((pXmin > eXmin) && (pXmin < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
+    bool bottomRightPointInside = ((pXmax > eXmin) && (pXmax < eXmax)) && ((pYmin > eYmin) && (pYmin < eYmax));
+    bool bottomLeftPointInside = ((pXmin > eXmin) && (pXmin < eXmax)) && ((pYmin > eYmin) && (pYmin < eYmax));
+    bool isInside = topRightPointInside || topLeftPointInside || bottomLeftPointInside || bottomRightPointInside;
+    if (isInside) {
+        return true;
+    }
+    return false;
+}
+

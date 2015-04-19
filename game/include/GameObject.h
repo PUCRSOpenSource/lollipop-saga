@@ -32,6 +32,8 @@ public:
 
     void zigzag();
 
+    bool hasContact(GameObject *object);
+
 protected:
     float x;
     float y;

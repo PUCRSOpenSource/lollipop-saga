@@ -63,42 +63,14 @@ void draw(void)
                 objects[i]->draw();
         }
 
-        //to tendo problemas pra usar funçoes sei la pq entao vou botar tudo aqui dentro
+        //contact
 
         for (int i = 0; i < objects.size(); i++) {
-            GameObject *enemy = objects[i];
-            float pXmax = ship->getX() + 0.1; //x maximo do player
-            float pXmin = ship->getX() - 0.1; //x minimo do player
-            float pYmax = ship->getY() + 0.1; //y maximo do player
-            float pYmin = ship->getY() - 0.1; //y minimo do player
-
-            float eXmax = enemy->getX() + 0.1; //x maximo do enemy
-            float eXmin = enemy->getX() - 0.1; //x minimo do enemy
-            float eYmax = enemy->getY() + 0.1; //y maximo do enemy
-            float eYmin = enemy->getY() - 0.1; //y minimo do enemy
-
-            bool topRightPointInside = ((pXmax > eXmin) && (pXmax < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
-            bool topLeftPointInside = ((pXmin > eXmin) && (pXmin < eXmax)) && ((pYmax > eYmin) && (pYmax < eYmax));
-            bool bottomRightPointInside = ((pXmax > eXmin) && (pXmax < eXmax)) && ((pYmin > eYmin) && (pYmin < eYmax));
-            bool bottomLeftPointInside = ((pXmin > eXmin) && (pXmin < eXmax)) && ((pYmin > eYmin) && (pYmin < eYmax));
-            bool topInside = topRightPointInside || topLeftPointInside || bottomLeftPointInside || bottomRightPointInside;
-            if (topInside) {
+            if(ship->hasContact(objects[i])) {
                 objects.erase(objects.begin() + i);
             }
+        }    
 
-        }
-
-
-        //GameObject *player = objects[0];
-        // GameObject *enemy = objects[1];
-
-        // if (objects.size() > 1) {
-        //     if(hasCollided(player,enemy)) {
-        //         objects.pop_back();
-        //     }
-
-        // }
-        
         glFlush();
 }
 
