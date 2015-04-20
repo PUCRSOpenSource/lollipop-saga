@@ -1,4 +1,8 @@
 #include "GameObject.h"
+#include <stdlib.h>
+#include <vector>
+//#include "Bullet.h"
+
 class Ship : public GameObject
 {
 public:
@@ -8,6 +12,9 @@ public:
 
     void draw();
     void shoot();
+    // void moveBullets();
+    // void drawBullets();
 private:
-    /* data */
+	// std::vector<Bullet*> bullets;
+   
 };

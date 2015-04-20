@@ -50,3 +50,22 @@ void Ship::draw()
         glEnd();
         
 }
+
+// void Ship::shoot() {
+//         Bullet* bullet;
+//         bullet = new Bullet(x,y);
+//         bullets.push_back(bullet);
+// }
+
+// void Ship::moveBullets() {
+//          for (int i = 0; i < bullets.size(); i++) {
+//             bullets[i]->moveUp();
+//             bullets[i]->moveUp();
+//         }
+// }
+
+// void drawBullets() {
+//         for (int i = 0; i < bullets.size(); i++) {
+//             bullets[i]->draw();
+//         }   
+// }

@@ -8,6 +8,7 @@
 #include "GameObject.h"
 #include "Ship.h"
 #include "Map.h"
+#include "Bullet.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -17,6 +18,7 @@
 using namespace std;
 
 std::vector<GameObject*> objects;
+std::vector<Bullet*> bullets;
 GameObject* ship;
 Map* map;
 float bottomY;
@@ -32,6 +34,10 @@ void draw(void)
             bottomY += 0.009;
             topY += 0.009;
             ship->moveUp();
+             for(int i = 0; i < bullets.size(); i++) {
+                 bullets[i]->moveUp();
+                 bullets[i]->moveUp();
+             }
             for(int i = 0; i < objects.size(); i++) {
                 objects[i]->zigzag();
             }
@@ -57,11 +63,14 @@ void draw(void)
         glLoadIdentity();
         glPopMatrix();
         glLoadIdentity();
-        ship->draw();
         map->drawMap();
+        ship->draw();
         for (int i = 0; i < objects.size(); i++) {
                 objects[i]->draw();
         }
+         for (int i = 0; i < bullets.size(); i++) {
+                 bullets[i]->draw();
+         }
 
         //contact
 
@@ -91,9 +100,9 @@ void keyboard(unsigned char key, int x, int y)
                 }
                 break;
             case 'w':
-                ship->moveUp();
-                //bottomY += 0.009;
-                //topY += 0.009;
+                 // Bullet* bullet;
+                 // bullet = new Bullet(ship->getX(),ship->getY());
+                 // bullets.push_back(bullet);
                 break;
             default:
                 break;
