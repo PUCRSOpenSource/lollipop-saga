@@ -17,7 +17,7 @@ void Bullet::draw()
         glLineWidth(2);
         glBegin(GL_LINE_LOOP);
             glVertex2f(x, y);
-            glVertex2f(x + 0.05, y + 0.05);
+            glVertex2f(x , y + 0.05);
         glEnd();
 }
 
