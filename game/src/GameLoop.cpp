@@ -8,7 +8,7 @@
 #include "GameObject.h"
 #include "Ship.h"
 #include "Map.h"
-#include "Bullet.h"
+//#include "Bullet.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -18,7 +18,7 @@
 using namespace std;
 
 std::vector<GameObject*> objects;
-std::vector<Bullet*> bullets;
+//std::vector<Bullet*> bullets;
 GameObject* ship;
 Map* map;
 float bottomY;
@@ -34,13 +34,21 @@ void draw(void)
             bottomY += 0.009;
             topY += 0.009;
             ship->moveUp();
-             for(int i = 0; i < bullets.size(); i++) {
-                 bullets[i]->moveUp();
-                 bullets[i]->moveUp();
-             }
+            
+            // METODOS PARA ATIRAR:
+            // se for na ship:
+
+            // ship->moveBullets();
+
+            // se for aqui:
+            // for(int i = 0; i < bullets.size(); i++) {
+            //      bullets[i]->moveUp();
+            //      bullets[i]->moveUp();
+            //  }
+
             for(int i = 0; i < objects.size(); i++) {
-                objects[i]->zigzag();
-            }
+                 objects[i]->zigzag();
+             }
             timeBefore = timeNow;
         }
 
@@ -52,6 +60,7 @@ void draw(void)
         //          topY += 0.009;
         //          ship->moveUp();
         // }
+
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         gluOrtho2D(-1.0,1.0,bottomY,topY);
@@ -68,11 +77,16 @@ void draw(void)
         for (int i = 0; i < objects.size(); i++) {
                 objects[i]->draw();
         }
-         for (int i = 0; i < bullets.size(); i++) {
-                 bullets[i]->draw();
-         }
+        //METODOS PARA ATIRAR
 
-        //contact
+        //se for com a nave:
+        //ship->drawBullets();
+
+        //se for direto aqui:
+
+         // for (int i = 0; i < bullets.size(); i++) {
+         //         bullets[i]->draw();
+         // }
 
         for (int i = 0; i < objects.size(); i++) {
             if(ship->hasContact(objects[i])) {
@@ -100,9 +114,16 @@ void keyboard(unsigned char key, int x, int y)
                 }
                 break;
             case 'w':
-                 // Bullet* bullet;
-                 // bullet = new Bullet(ship->getX(),ship->getY());
-                 // bullets.push_back(bullet);
+                // METODOS PARA ATIRAR
+                // se for na ship:
+
+                // ship->shoot();
+
+                // se for aqui:
+
+                //  // Bullet* bullet;
+                //  // bullet = new Bullet(ship->getX(),ship->getY());
+                //  // bullets.push_back(bullet);
                 break;
             default:
                 break;
