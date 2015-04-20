@@ -12,10 +12,10 @@ CFLAGS = -lglut -lGL -lGLU -I$(IDIR) -Wall
 endif
 
 
-_DEPS =  Enemy.h GameObject.h Map.h Ship.h
+_DEPS =  Enemy.h GameObject.h Map.h Ship.h Bullet.h
 DEPS  = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = GameLoop.o GameObject.o Map.o Ship.o Enemy.o
+_OBJ = GameLoop.o GameObject.o Map.o Ship.o Enemy.o Bullet.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp $(DEPS)

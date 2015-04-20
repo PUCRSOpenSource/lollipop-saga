@@ -6,6 +6,9 @@ Bullet::Bullet(float x, float y) : GameObject()
         setX(x);
         setY(y);
 }
+Bullet::~Bullet(void)
+{
+}
 
 void Bullet::draw()
 {
@@ -15,6 +18,6 @@ void Bullet::draw()
         glBegin(GL_LINE_LOOP);
             glVertex2f(x, y);
             glVertex2f(x + 0.05, y + 0.05);
-        }
         glEnd();
 }
+
