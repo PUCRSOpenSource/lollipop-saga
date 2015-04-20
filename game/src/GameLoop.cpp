@@ -75,6 +75,7 @@ void draw(void)
                 for (unsigned int j = 0; j < bullets.size(); j++) {
                         if (bullets[j]->hasContact(enemies[i])) {
                                 enemies.erase(enemies.begin() + i);
+                                bullets.erase(bullets.begin() + j);
                         }
                 }
 

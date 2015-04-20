@@ -5,6 +5,10 @@ Ship::Ship(void) : GameObject()
 {
         setX(0.1f);
         setY(-0.9f);
+        setXmax(x + 0.1);
+        setXmin(x - 0.1);
+        setYmax(y + 0.1);
+        setYmin(y - 0.1);
 }
 
 Ship::~Ship(void)

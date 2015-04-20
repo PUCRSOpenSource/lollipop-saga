@@ -32,6 +32,22 @@ public:
 
     void zigzag();
 
+    void setXmax(float posXmax);
+
+    void setXmin(float posXmin);
+
+    void setYmax(float posYmax);
+
+    void setYmin(float posYmin);
+
+    float getXmax();
+
+    float getYmax();
+
+    float getXmin();
+
+    float getYmin();
+
     bool hasContact(GameObject *object);
 
 protected:

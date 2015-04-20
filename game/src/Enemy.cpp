@@ -5,6 +5,10 @@ Enemy::Enemy(float x, float y) : GameObject()
 {
         setX(x);
         setY(y);
+        setXmax(x + 0.1);
+        setXmin(x - 0.1);
+        setYmax(y + 0.1);
+        setYmin(y - 0.1);
 }
 
 void Enemy::draw()
