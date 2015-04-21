@@ -16,10 +16,10 @@ void Map::drawStar(float x, float y)
         glLineWidth(2);
         glBegin(GL_LINE_LOOP);
             glVertex2f(x, y);
-            glVertex2f(x + 0.05, y + 0.075);
-            glVertex2f(x + 0.1, y);
-            glVertex2f(x - 0.025, y + 0.05);
-            glVertex2f(x + 0.125, y + 0.05);
+            glVertex2f(x + 0.02, y + 0.03);
+            glVertex2f(x + 0.04, y);
+            glVertex2f(x - 0.01, y + 0.02);
+            glVertex2f(x + 0.05, y + 0.02);
         glEnd();
         
 }

@@ -133,9 +133,7 @@ int main(int argc, const char *argv[])
         map = new Map();
         for (int i = 0; i < 10; i++) {
                 int random = rand() % 10;
-                cout << random << endl;
                 float frandom = random / 10.0;
-                cout << frandom << endl;
                 GameObject* enemy;
                 enemy = new Enemy(0 + frandom, i + frandom, i % 2);
                 enemies.push_back(enemy);
