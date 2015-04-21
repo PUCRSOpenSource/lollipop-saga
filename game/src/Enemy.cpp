@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include <cmath>
 
-Enemy::Enemy(float x, float y) : GameObject()
+Enemy::Enemy(float x, float y, int t) : GameObject()
 {
         setX(x);
         setY(y);
@@ -9,9 +9,20 @@ Enemy::Enemy(float x, float y) : GameObject()
         setXmin(x - 0.1);
         setYmax(y + 0.1);
         setYmin(y - 0.1);
+        type = t;
+
 }
 
 void Enemy::draw()
+{
+        if (type == 1) {
+            drawNacho();
+        } else {
+            drawCookie();
+        }
+}
+
+void Enemy::drawCookie()
 {
         glColor3f(0,0,1);
         //FIXME
@@ -39,5 +50,17 @@ void Enemy::draw()
             posX = cos_theta * posX - sin_theta * posY;
             posY = sin_theta * t + cos_theta * posY;
         }
+        glEnd();
+}
+
+void Enemy::drawNacho()
+{
+        glColor3f(1,1,0);
+        
+        glLineWidth(2);
+        glBegin(GL_LINE_LOOP);
+            glVertex2f(x, y + 0.05);
+            glVertex2f(x + 0.075, y - 0.05);
+            glVertex2f(x - 0.075, y - 0.05);
         glEnd();
 }

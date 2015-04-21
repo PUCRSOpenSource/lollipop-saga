@@ -104,7 +104,7 @@ void keyboard(unsigned char key, int x, int y)
                         break;
                 case 'w':
                         GameObject* bullet;
-                        bullet = new Bullet(ship->getX(), ship->getY());
+                        bullet = new Bullet(ship->getX(), ship->getY() + 0.12);
                         bullets.push_back(bullet);
                         break;
                 default:
@@ -133,7 +133,7 @@ int main(int argc, const char *argv[])
         map = new Map();
         for (int i = 0; i < 10; i++) {
                 GameObject* enemy;
-                enemy = new Enemy(0.5,i);
+                enemy = new Enemy(0.5, i , i % 2);
                 enemies.push_back(enemy);
         }
 
