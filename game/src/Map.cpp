@@ -1,8 +1,9 @@
 #include "Map.h"
+#include <stdlib.h>
 
 Map::Map(void)
 {
-        
+        generateMap();
 }
 
 Map::~Map(void)
@@ -24,5 +25,19 @@ void Map::drawStar(float x, float y)
 }
 
 void Map::drawMap() {
-    drawStar(0,2);
+    for (int i = 0; i < 100; i ++) {
+        drawStar(xarray[i],yarray[i]);
+    } 
+}
+
+void Map::generateMap() {
+    for (int i = 0; i < 100; i ++) {
+        int x = rand() % 20;
+        x = x - 10;
+        float xf = x / 10.0;
+        int y = rand() % 100;
+        float yf = y / 10.0;
+        xarray[i] = xf;
+        yarray[i] = yf;
+    }
 }

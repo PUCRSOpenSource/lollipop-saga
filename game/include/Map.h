@@ -15,6 +15,8 @@ public:
 
     void drawStar(float x, float y);
     void drawMap();
+    void generateMap();
 private:
-    /* data */
+	float xarray[100];
+	float yarray[100];
 };
