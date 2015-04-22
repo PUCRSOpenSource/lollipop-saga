@@ -11,14 +11,14 @@
 
 \sloppy
 
-\title{O SUPER JOGO!!!}
+\title{Lollipop Shooter}
 
 \author{Daniel A. Amarante, Diego P. da Jornada}
 
 
 \address{Faculdade de Informática -- Pontifícia Universidade Católica do Rio
     Grande do Sul\\  (PUCRS)\\
-  \email{daniel.amarante, diego.jornada}@acad.purs.br
+  \email{\{daniel.amarante, diego.jornada\}@acad.purs.br}
 }
 
 \begin{document} 
@@ -26,52 +26,32 @@
 \maketitle
 
 \begin{abstract}
-  This paper was written as the documentation of the first project of the Computer Graphics I class of PUCRS.
-  It describes a shooter type game about a lonely Lollipop ship flying through space while fighting the evil
-  cookies and nachos. The game was written in C++ and uses OpenGL for graphics.
+  This paper was written as the documentation of the first project of the Computer Graphics I class of PUCRS. It describes a shooter type game about a lonely Lollipop ship flying through space while fighting the evil cookies and nachos. The game was written in C++ and uses OpenGL for graphics.
 \end{abstract}
      
 \begin{resumo} 
-  Este artigo foi escrito como a documentação do primeiro projeto da disciplina de Computação Gráfica I da PUCRS.
-  Ele descreve um jogo de estilo Shooter sobre um pirulito solitário voando através do espaço enquanto luta com os
-  biscoitos e nachos malignos. O jogo foi escrito em C++ e utiliza do OpenGL para os gráficos.
+  Este artigo foi escrito como a documentação do primeiro projeto da disciplina de Computação Gráfica I da PUCRS. Ele descreve um jogo de estilo Shooter sobre um pirulito solitário voando através do espaço enquanto luta com os biscoitos e nachos malignos. O jogo foi escrito em C++ e utiliza do OpenGL para os gráficos.
 \end{resumo}
+
 
 \section{Informações gerais sobre o jogo}
 
-O jogo consiste de um \emph{Shooter} 2d situado no espaço sideral cujo objetivo é sobreviver à onda de inimigos que 
-se encontrarão no caminho. O jogador dispõe da possibilidade de se mover para os lados, sendo limitado pelo fim da tela,
-para desviar dos inimigos e da possibilidade de atirar contra eles. Um tiro, ao entrar em contato com um inimigo,
-o destrói, destruindo a si mesmo como consequência. Para vencer o jogo, o jogador deve chegar até o final do mapa
-sem ser pego pelos inimigos. Para ser derrotado basta um inimigo colidir com o jogador.
+O jogo consiste de um \emph{Shooter} 2d situado no espaço sideral cujo objetivo é sobreviver à onda de inimigos que se encontrarão no caminho. O jogador dispõe da possibilidade de se mover para os lados, sendo limitado pelo fim da tela, para desviar dos inimigos e da possibilidade de atirar contra eles. Um tiro, ao entrar em contato com um inimigo, o destrói, destruindo a si mesmo como consequência. Para vencer o jogo, o jogador deve chegar até o final do mapa sem ser pego pelos inimigos. Para ser derrotado basta um inimigo colidir com o jogador.
 
 \section{Projeto de Classes}
 
-Todos os objetos do jogo herdam de uma classe chamada GameObject, com funções que serão herdadas por todos, como as
-funções de movimentação e as funções de desenhar, a movimentação é igual para todos os objetos que se movimentam, mas
-a forma com que são desenhados vai ter que ser sobrescrita.
+Todos os objetos do jogo herdam de uma classe chamada GameObject, com funções que serão herdadas por todos, como as funções de movimentação e as funções de desenhar, a movimentação é igual para todos os objetos que se movimentam, mas a forma com que são desenhados vai ter que ser sobrescrita.
 
 \section{Formas}
 
-Os objetos do jogo assumem diversas formas, o jogador consiste de um circulo e um retângulo, para se assemelhar a um
-pirulito, os inimigos são formados por circulos e triângulos, representando biscoitos e nachos respectivamente. E o
-mapa ao fundo consiste de diversas estrelas desenhadas em posições aleatorias.
+Os objetos do jogo assumem diversas formas, o jogador consiste de um circulo e um retângulo, para se assemelhar a um pirulito, os inimigos são formados por circulos e triângulos, representando biscoitos e nachos respectivamente. E o mapa ao fundo consiste de diversas estrelas desenhadas em posições aleatorias.
 
 \section{Movimentação}
 
-O único objeto que avança no jogo é o jogador, trazendo consigo a tela. Todos os inimigos somente se encontram no
-caminho, movendo-se para os lados. Existe a impressão de que os inimigos é que vem em direção ao jogador, e o jogador
-está parado, mas é apenas uma ilusão causada pelo movimento da tela junto com o movimento do player.
+O único objeto que avança no jogo é o jogador, trazendo consigo a tela. Todos os inimigos somente se encontram no caminho, movendo-se para os lados. Existe a impressão de que os inimigos é que vem em direção ao jogador, e o jogador está parado, mas é apenas uma ilusão causada pelo movimento da tela junto com o movimento do player.
 
 \section{Colisões}
 
-As colisões do jogo foram implementadas da seguinte forma. Desenha-se uma caixa em volta dos objetos, utilizando
-seus pontos mais extremos, que será utilizada para detectar a colisão. Desta caixa tiramos seus vértices. É possível
-saber se um ponto se encontra dentro de uma caixa, comparando-o com seus vértices. Portanto, utilizamos desta comparação
-nos quatro vértices do objeto 1, para saber se se encontram dentro do retângulo do objeto 2, caso a resposta seja
-verdadeira temos uma colisão.
-
-\bibliographystyle{sbc}
-\bibliography{doc}
+As colisões do jogo foram implementadas da seguinte forma. Desenha-se uma caixa em volta dos objetos, utilizando seus pontos mais extremos, que será utilizada para detectar a colisão. Desta caixa tiramos seus vértices. É possível saber se um ponto se encontra dentro de uma caixa, comparando-o com seus vértices. Portanto, utilizamos desta comparação nos quatro vértices do objeto 1, para saber se se encontram dentro do retângulo do objeto 2, caso a resposta seja verdadeira temos uma colisão.
 
 \end{document}

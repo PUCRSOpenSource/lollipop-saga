@@ -17,13 +17,21 @@ Ship::~Ship(void)
 
 void Ship::draw()
 {
-        glColor3f(1,0,0);
         //FIXME
         //colocar cx e cx em um ponto
         float cx = this->x;
         float cy = this->y;
 
-        int segs = 100;
+        glColor3f(1,1,1);
+        glBegin(GL_LINE_LOOP);
+                glVertex2f(this->x - 0.0125, this->y);
+                glVertex2f(this->x + 0.0125, this->y);
+                glVertex2f(this->x + 0.0125, this->y + 0.2);
+                glVertex2f(this->x - 0.0125, this->y + 0.2);
+                glVertex2f(this->x - 0.0125, this->y);
+        glEnd();
+        glColor3f(1,1,0);
+        int segs = 360;
         float t;
 
         float theta = 2.0f * M_PI / float(segs);
@@ -34,7 +42,7 @@ void Ship::draw()
         float posX = r;
         float posY = 0;
 
-        glLineWidth(2);
+        glLineWidth(3);
         glBegin(GL_LINE_LOOP);
         for(int i = 0; i < segs; i++)
         {
@@ -48,7 +56,8 @@ void Ship::draw()
         posX = r / 1.5;
         posY = 0;
 
-        glLineWidth(2);
+        glColor3f(1,0,1);
+        glLineWidth(3);
         glBegin(GL_LINE_LOOP);
         for(int i = 0; i < segs; i++)
         {
@@ -57,11 +66,13 @@ void Ship::draw()
             posX = cos_theta * posX - sin_theta * posY;
             posY = sin_theta * t + cos_theta * posY;
         }
+        glEnd();
 
         posX = r / 2.5;
         posY = 0;
 
-        glLineWidth(2);
+        glColor3f(0,1,0);
+        glLineWidth(3);
         glBegin(GL_LINE_LOOP);
         for(int i = 0; i < segs; i++)
         {
@@ -71,15 +82,8 @@ void Ship::draw()
             posY = sin_theta * t + cos_theta * posY;
         }
         glEnd();
-        glEnd();
 
-        glBegin(GL_LINE_LOOP);
-                glVertex2f(this->x - 0.0125, this->y);
-                glVertex2f(this->x + 0.0125, this->y);
-                glVertex2f(this->x + 0.0125, this->y + 0.2);
-                glVertex2f(this->x - 0.0125, this->y + 0.2);
-                glVertex2f(this->x - 0.0125, this->y);
-        glEnd();
+        
         
 }
 
