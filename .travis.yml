@@ -1,4 +1,5 @@
 language: 
     cpp
-before_install:
+script:
     cd game
+    make
