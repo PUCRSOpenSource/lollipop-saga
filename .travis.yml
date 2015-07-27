@@ -1,1 +1,4 @@
-language: cpp
+language: 
+    cpp
+before_install:
+    cd game
